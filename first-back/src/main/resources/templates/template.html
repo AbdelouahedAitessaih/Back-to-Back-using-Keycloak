@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="webjars/bootstrap/4.6.0-1/css/bootstrap.min.css">
+    <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.6.0-1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-primary navbar-light">
+    <!-- Brand -->
+    <a class="navbar-brand text-light" href="/">Home</a>
+
+    <!-- Links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link text-light" href="/products">Products</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" href="/suppliers">Suppliers</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item" sec:authorize="isAnonymous()">
+            <a class="nav-link text-light" href="/sso/login">Login</a>
+        </li>
+        <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+            <a sec:authentication="name" class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item text-dark" href="/editAccount">Edit Account</a>
+                <a class="dropdown-item text-dark" href="/changePassword">Change Password</a>
+                <a class="dropdown-item text-dark" href="/logout">Logout</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<div layout:fragment="content">
+
+</div>
+</body>
+</html>
